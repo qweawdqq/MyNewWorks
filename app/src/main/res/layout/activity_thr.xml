@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/thr_et"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_margin="5dp"
+        android:gravity="center"
+        android:hint="输入文字"
+        android:textSize="32sp" />
+
+    <Button
+        android:id="@+id/thr_btn"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_margin="5dp"
+        android:text="生成"
+        android:textSize="32sp" />
+
+    <ImageView
+        android:id="@+id/thr_img"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:background="@mipmap/ic_launcher" />
+
+</LinearLayout>
