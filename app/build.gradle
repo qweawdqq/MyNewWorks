@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
@@ -72,7 +71,7 @@ android {
         release {
             // 不显示Log
             buildConfigField "boolean", "LOG_DEBUG", "false"
-            minifyEnabled true
+            minifyEnabled false
             //Zipalign优化
             zipAlignEnabled true
             // 移除无用的resource文件
@@ -121,5 +120,9 @@ android {
         compile 'com.squareup.picasso:picasso:2.5.2'
         compile 'com.google.zxing:core:3.2.1'
         compile 'com.google.zxing:android-core:3.2.1'
+        compile files('libs/universal-image-loader-1.9.5-javadoc.jar')
+        compile files('libs/universal-image-loader-1.9.5-sources.jar')
+        compile files('libs/universal-image-loader-1.9.5.jar')
     }
 }
+

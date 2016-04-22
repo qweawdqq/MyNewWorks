@@ -1,13 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <TextView
+    >
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="for"
-        android:textSize="88sp" />
-</LinearLayout>
+        android:scaleType="fitXY"
+        android:id="@+id/for_img_bg"
+        />
+<com.example.dllo.mynewworks.myfor.ViewPagerHelperLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <com.example.dllo.mynewworks.myfor.MyViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/for_viewpager"
+        ></com.example.dllo.mynewworks.myfor.MyViewPager>
+</com.example.dllo.mynewworks.myfor.ViewPagerHelperLayout>
+
+
+
+
+</RelativeLayout>

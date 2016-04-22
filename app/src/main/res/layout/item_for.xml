@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <TextView
+        android:gravity="center"
+        android:id="@+id/for_item_tv"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:textSize="88sp"
+        android:textColor="@android:color/white"
+        android:background="#7F000000"
+        />
+</LinearLayout>

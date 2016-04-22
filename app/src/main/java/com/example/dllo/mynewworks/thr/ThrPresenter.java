@@ -11,6 +11,14 @@ import com.example.dllo.mynewworks.untils.Encoder;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.InterfaceAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.List;
 
 import rx.Observable;
 import rx.Subscriber;
@@ -41,8 +49,9 @@ public class ThrPresenter {
             @Override
             public void call(Subscriber<? super Bitmap> subscriber) {
                 Log.e("text", thrView.getEditText().toString());
-
-                Bitmap bm = builder.encode(thrView.getEditText(), getLogoImage((Context) thrView, R.mipmap.ic_launcher));
+                String s = thrView.getEditText().toString();
+                String xx = "https://api.mch.weixin.qq.com/pay/unifiedorder";
+                Bitmap bm = builder.encode(xx, getLogoImage((Context) thrView, R.mipmap.ic_launcher));
                 subscriber.onNext(bm);
             }
         }).observeOn(AndroidSchedulers.mainThread())
@@ -54,6 +63,37 @@ public class ThrPresenter {
                     }
                 });
     }
+
+
+    /**
+     * 获取本机Ip
+     * <p/>
+     * 通过 获取系统所有的networkInterface网络接口 然后遍历 每个网络下的InterfaceAddress组。
+     * 获得符合 <code>InetAddress instanceof Inet4Address</code> 条件的一个IpV4地址
+     *
+     * @return
+     */
+//    @SuppressWarnings("rawtypes")
+//    private String localIp() {
+//        String ip = null;
+//        Enumeration allNetInterfaces = null;
+//        try {
+//            allNetInterfaces = NetworkInterface.getNetworkInterfaces();
+//        } catch (SocketException e) {
+//            e.printStackTrace();
+//        }
+//        while (allNetInterfaces.hasMoreElements()) {
+//            NetworkInterface netInterface = (NetworkInterface) allNetInterfaces.nextElement();
+//            List<InterfaceAddress> InterfaceAddress = netInterface.getInterfaceAddresses();
+//            for (InterfaceAddress add : InterfaceAddress) {
+//                InetAddress Ip = add.getAddress();
+//                if (Ip != null && Ip instanceof Inet4Address) {
+//                    ip = Ip.getHostAddress();
+//                }
+//            }
+//        }
+//        return ip;
+//    }
 
     private Bitmap getLogoImage(Context context, int resourseId) {
         BitmapFactory.Options options = new BitmapFactory.Options();
