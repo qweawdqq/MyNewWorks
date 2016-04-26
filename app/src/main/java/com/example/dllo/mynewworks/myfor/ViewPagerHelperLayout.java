@@ -31,7 +31,7 @@ public class ViewPagerHelperLayout extends LinearLayout {
     public ViewPagerHelperLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
 
-        viewDragHelper = ViewDragHelper.create(this, 0.5f, new DragHelperCallBack());
+        viewDragHelper = ViewDragHelper.create(this, 30f, new DragHelperCallBack());
 
     }
 
@@ -50,22 +50,15 @@ public class ViewPagerHelperLayout extends LinearLayout {
         }
 
 
-        @Override
-        public void onViewPositionChanged(View changedView, int left, int top, int dx, int dy) {
-            super.onViewPositionChanged(changedView, left, top, dx, dy);
-//            Log.e("top++" + top, "dy++" + dy);
-        }
 
         @Override
         public int clampViewPositionVertical(View child, int top, int dy) {
-//            Log.e("top-" + top, "dy=" + dy);
-            mTop = top;
+           mTop = top;
             return top;
         }
 
         @Override
         public void onViewReleased(View releasedChild, float xvel, float yvel) {
-            Log.e("yvel==", "ea" + yvel);
             setItemPosition(yvel);
             viewDragHelper.settleCapturedViewAt(mAutoBackOriginPos.x, mAutoBackOriginPos.y);
             invalidate();
@@ -75,7 +68,6 @@ public class ViewPagerHelperLayout extends LinearLayout {
     private void setItemPosition(float yv) {
         position = viewpager.getCurrentItem();
 
-        Log.e("position", "==" + position);
         if (mTop < -moved || yv < -1200) {
             int down = position + 1;
             count = viewpager.getAdapter().getCount();
@@ -96,7 +88,6 @@ public class ViewPagerHelperLayout extends LinearLayout {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-
         viewDragHelper.processTouchEvent(event);
         return true;
     }
@@ -113,7 +104,6 @@ public class ViewPagerHelperLayout extends LinearLayout {
         super.computeScroll();
         if (viewDragHelper.continueSettling(true)) {
             ViewCompat.postInvalidateOnAnimation(this);
-//        invalidate();
         }
     }
 }

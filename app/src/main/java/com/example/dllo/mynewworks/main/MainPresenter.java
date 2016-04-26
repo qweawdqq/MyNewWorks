@@ -23,6 +23,7 @@ public class MainPresenter {
         name.add("two");
         name.add("thr");
         name.add("for");
+        name.add("fiv");
         adapter.addInfo(name);
         mainView.getRecycleAdapter(adapter);
     }

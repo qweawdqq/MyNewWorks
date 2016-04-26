@@ -3,6 +3,7 @@ package com.example.dllo.mynewworks.untils;
 import android.content.Context;
 import android.content.Intent;
 
+import com.example.dllo.mynewworks.fiv.FivActivity;
 import com.example.dllo.mynewworks.myfor.ForActivity;
 import com.example.dllo.mynewworks.one.OneActivity;
 import com.example.dllo.mynewworks.thr.ThrActivity;
@@ -26,6 +27,9 @@ public class ToNextUntil {
                 break;
             case "for":
                 toActivity(context, ForActivity.class);
+                break;
+            case "fiv":
+                toActivity(context, FivActivity.class);
                 break;
 
         }
