@@ -40,48 +40,47 @@ private String post_url = "http://api101.test.mirroreye.cn/index.php/story/info"
     @Override
     protected void initData() {
         ButterKnife.bind(this);
-//        getDataFromNet();
-        postAnsync();
+        getDataFromNet();
+//        postAnsync();
     }
 
     private void postAnsync() {
-        OKhttpHelper ok = new OKhttpHelper();
-        Map<String,String>map = new HashMap<String, String>();
-        map.put("token","");
-        map.put("device_type","2");
-        map.put("story_id","2");
-        ok.postKeyValueAsync(post_url, map, new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                Log.e("??", "??");
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                Log.e("okok", "okok");
-                Log.e("111111",response.body().string());
-                Log.e("111111",response.toString());
-            }
-        });
+//        OKhttpHelper ok = new OKhttpHelper();
+//        Map<String,String>map = new HashMap<String, String>();
+//        map.put("token","");
+//        map.put("device_type","2");
+//        map.put("story_id","2");
+//        ok.postKeyValueAsync(post_url, map, new Callback() {
+//            @Override
+//            public void onFailure(Call call, IOException e) {
+//                Log.e("??", "??");
+//            }
+//
+//            @Override
+//            public void onResponse(Call call, Response response) throws IOException {
+//                Log.e("okok", "okok");
+//                Log.e("111111",response.body().string());
+//                Log.e("111111",response.toString());
+//            }
+//        });
     }
 
     public void getDataFromNet() {
         Observable.create(new Observable.OnSubscribe<String>() {
             @Override
             public void call(Subscriber<? super String> subscriber) {
-                OKhttpHelper ok = new OKhttpHelper();
+
                 Map<String,String>map = new HashMap<String, String>();
                 map.put("token","");
                 map.put("device_type","2");
                 map.put("story_id","2");
                 String result = null;
                 try {
-                    result = ok.postKeyValuePair(post_url,map);
+                    result = OKhttpHelper.getInstance(SixActivity.this).postKeyValuePair(post_url, map, "six");
                     subscriber.onNext(result);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
 
             }
         }).observeOn(AndroidSchedulers.mainThread())
@@ -92,7 +91,11 @@ private String post_url = "http://api101.test.mirroreye.cn/index.php/story/info"
                         sixTv.setText(s);
                     }
                 });
+    }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
 
     }
 }
