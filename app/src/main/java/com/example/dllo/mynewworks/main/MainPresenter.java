@@ -24,6 +24,7 @@ public class MainPresenter {
         name.add("thr");
         name.add("for");
         name.add("fiv");
+        name.add("six");
         adapter.addInfo(name);
         mainView.getRecycleAdapter(adapter);
     }

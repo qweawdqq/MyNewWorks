@@ -22,6 +22,7 @@
         <activity android:name=".thr.ThrActivity"></activity>
         <activity android:name=".one.OneActivity"></activity>
         <activity android:name=".fiv.FivActivity"></activity>
+        <activity android:name=".six.SixActivity"></activity>
     </application>
 
 </manifest>

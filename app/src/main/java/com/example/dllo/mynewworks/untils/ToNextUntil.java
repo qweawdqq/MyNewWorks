@@ -6,6 +6,7 @@ import android.content.Intent;
 import com.example.dllo.mynewworks.fiv.FivActivity;
 import com.example.dllo.mynewworks.myfor.ForActivity;
 import com.example.dllo.mynewworks.one.OneActivity;
+import com.example.dllo.mynewworks.six.SixActivity;
 import com.example.dllo.mynewworks.thr.ThrActivity;
 import com.example.dllo.mynewworks.two.TwoActivity;
 
@@ -30,6 +31,9 @@ public class ToNextUntil {
                 break;
             case "fiv":
                 toActivity(context, FivActivity.class);
+                break;
+            case "six":
+                toActivity(context, SixActivity.class);
                 break;
 
         }

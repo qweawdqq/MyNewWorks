@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.dllo.mynewworks.R;
 import com.example.dllo.mynewworks.untils.BitMapUntils;
@@ -45,7 +46,7 @@ public class FivAdapter extends RecyclerView.Adapter<FivAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(FivAdapter.MyViewHolder holder, int position) {
-       holder.imageView.setImageBitmap(BitMapUntils.setMyBitMap(context,datas.get(position)));
+       holder.imageView.setImageBitmap(BitMapUntils.setMyBitMap(context, datas.get(position)));
     }
 
     @Override
@@ -60,6 +61,12 @@ public class FivAdapter extends RecyclerView.Adapter<FivAdapter.MyViewHolder> {
         public MyViewHolder(View itemView) {
             super(itemView);
             imageView = (ImageView) itemView.findViewById(R.id.item_fiv_img);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(context, "gogo", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
 
