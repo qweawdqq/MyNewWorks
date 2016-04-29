@@ -74,7 +74,7 @@ public class OKhttpHelper {
     }
 
 
-    private static Request buildGetRequest(String url, Object tag) {
+    private Request buildGetRequest(String url, Object tag) {
         Request.Builder buidler = new Request.Builder();
         buidler.url(url);
         if (tag != null) {
@@ -83,13 +83,13 @@ public class OKhttpHelper {
         return buidler.build();
     }
 
-    private static Response buildResponse(String url, Object tag) throws IOException {
+    private Response buildResponse(String url, Object tag) throws IOException {
         Request request = buildGetRequest(url, tag);
         Response response = okHttpClient.newCall(request).execute();
         return response;
     }
 
-    private static ResponseBody buildResponseBody(String url, Object tag) throws IOException {
+    private ResponseBody buildResponseBody(String url, Object tag) throws IOException {
         Response response = buildResponse(url, tag);
         if (response.isSuccessful()) {
             return response.body();
@@ -104,7 +104,7 @@ public class OKhttpHelper {
      * @return
      * @throws IOException
      */
-    public static String getStringFromUrl(String url, Object tag) throws IOException {
+    public  String getStringFromUrl(String url, Object tag) throws IOException {
         ResponseBody responseBody = buildResponseBody(url, tag);
         if (responseBody != null) {
             return responseBody.string();
@@ -112,7 +112,7 @@ public class OKhttpHelper {
         return null;
     }
 
-    public static byte[] getByteFromUrl(String url, Object tag) throws IOException {
+    public  byte[] getByteFromUrl(String url, Object tag) throws IOException {
         ResponseBody responseBody = buildResponseBody(url, tag);
         if (responseBody != null) {
             return responseBody.bytes();
@@ -127,7 +127,7 @@ public class OKhttpHelper {
      * @return
      * @throws IOException
      */
-    public static InputStream getStreamFromUrl(String url, Object tag) throws IOException {
+    public  InputStream getStreamFromUrl(String url, Object tag) throws IOException {
         ResponseBody responseBody = buildResponseBody(url, tag);
         if (responseBody != null) {
             return responseBody.byteStream();
@@ -141,14 +141,14 @@ public class OKhttpHelper {
      * @param url
      * @param callback
      */
-    public static void getDataAsync(String url, Object tag, Callback callback) {
+    public  void getDataAsync(String url, Object tag, Callback callback) {
         Request request = buildGetRequest(url, tag);
         okHttpClient.newCall(request).enqueue(callback);
     }
 
 
     //    *************************下面是post部分******************************
-    private static Request builePostRequest(String url, RequestBody requestBody, Object tag) {
+    private  Request builePostRequest(String url, RequestBody requestBody, Object tag) {
         Request.Builder builder = new Request.Builder();
         if (tag != null) {
             builder.tag(tag);
@@ -158,7 +158,7 @@ public class OKhttpHelper {
     }
 
 
-    private static String postRequestBody(String url, RequestBody requestBody, Object tag) throws IOException {
+    private String postRequestBody(String url, RequestBody requestBody, Object tag) throws IOException {
         Request request = builePostRequest(url, requestBody, tag);
         Response response = okHttpClient.newCall(request).execute();
         if (response.isSuccessful()) {
@@ -167,7 +167,7 @@ public class OKhttpHelper {
         return null;
     }
 
-    private static RequestBody buildRequestBody(Map<String, String> map) {
+    private RequestBody buildRequestBody(Map<String, String> map) {
         FormBody.Builder builder = new FormBody.Builder();
         if (map != null && map.size() > 0) {
             Set<Map.Entry<String, String>> mapSet = map.entrySet();
@@ -186,13 +186,13 @@ public class OKhttpHelper {
      * @return
      * @throws IOException
      */
-    public static String postKeyValuePair(String url, Map<String, String> map, Object tag) throws IOException {
+    public String postKeyValuePair(String url, Map<String, String> map, Object tag) throws IOException {
         RequestBody requestBody = buildRequestBody(map);
         return postRequestBody(url, requestBody, tag);
     }
 
     //    ****************************post异步请求******************************
-    private static void postRequestBodyAnsync(String url, RequestBody requestBody, Object tag, Callback callback) {
+    private  void postRequestBodyAnsync(String url, RequestBody requestBody, Object tag, Callback callback) {
         Request request = builePostRequest(url, requestBody, tag);
         okHttpClient.newCall(request).enqueue(callback);
     }
@@ -204,13 +204,13 @@ public class OKhttpHelper {
      * @param map
      * @param callback
      */
-    public static void postKeyValueAsync(String url, Map<String, String> map, Object tag, Callback callback) {
+    public void postKeyValueAsync(String url, Map<String, String> map, Object tag, Callback callback) {
         RequestBody requestBody = buildRequestBody(map);
         postRequestBodyAnsync(url, requestBody, tag, callback);
     }
 //************************上传文件****************************
 
-    private static RequestBody buildRequestBody(Map<String, String> map, File[] files, String[] formFileName) {
+    private  RequestBody buildRequestBody(Map<String, String> map, File[] files, String[] formFileName) {
         MultipartBody.Builder builder = new MultipartBody.Builder().setType(MultipartBody.FORM);
 //     第一部分提交 :文件控件以外的其他input数据
         if (map != null) {
@@ -231,7 +231,7 @@ public class OKhttpHelper {
         return builder.build();
     }
 
-    private static String getNameType(String filename) {
+    private  String getNameType(String filename) {
         FileNameMap filenameMap = URLConnection.getFileNameMap();
         String contentTypeFor = filenameMap.getContentTypeFor(filename);
         if (contentTypeFor == null) {
@@ -250,12 +250,16 @@ public class OKhttpHelper {
      * @return
      * @throws IOException
      */
-    public static String postUrlLoadFiles(String url, Map<String, String> map, File[] files, String[] formFileName, Object tag) throws IOException {
+    public  String postUrlLoadFiles(String url, Map<String, String> map, File[] files, String[] formFileName, Object tag) throws IOException {
         RequestBody requestBody = buildRequestBody(map, files, formFileName);
         return postRequestBody(url, requestBody, tag);
     }
 
 
+    /**
+     * 关闭网络请求方法
+     * @param tag
+     */
     public void cancelTag(Object tag)
     {
         for (Call call : okHttpClient.dispatcher().queuedCalls())

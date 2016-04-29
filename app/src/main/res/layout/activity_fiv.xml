@@ -3,17 +3,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-<android.support.v4.widget.SwipeRefreshLayout
+<com.example.dllo.mynewworks.fiv.MySwipeRefreshLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/fiv_swipelayout"
+    android:orientation="vertical"
+    android:id="@+id/fiv_layout"
     >
     <android.support.v7.widget.RecyclerView
         android:id="@+id/fiv_recycleview"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
     </android.support.v7.widget.RecyclerView>
-</android.support.v4.widget.SwipeRefreshLayout>
+</com.example.dllo.mynewworks.fiv.MySwipeRefreshLayout>
+
+
+
+
+
 
 </LinearLayout>

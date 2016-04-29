@@ -1,8 +1,6 @@
 package com.example.dllo.mynewworks.fiv;
 
 import android.os.Bundle;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 
@@ -20,8 +18,9 @@ public class FivActivity extends BaseActivity {
 
     @Bind(R.id.fiv_recycleview)
     RecyclerView fivRecycleview;
-    @Bind(R.id.fiv_swipelayout)
-    SwipeRefreshLayout layotut;
+    @Bind(R.id.fiv_layout)
+    MySwipeRefreshLayout fivLayout;
+
 
     private FivAdapter adapter;
 
@@ -43,6 +42,7 @@ public class FivActivity extends BaseActivity {
         fivRecycleview.setAdapter(adapter);
         fivRecycleview.addItemDecoration(new DividerGridItemDecoration(this));
     }
+
 
 
 }
