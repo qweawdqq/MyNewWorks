@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-<com.example.dllo.mynewworks.fiv.MySwipeRefreshLayout
+<com.example.dllo.mynewworks.fiv.SuperSwipeRefreshLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </android.support.v7.widget.RecyclerView>
-</com.example.dllo.mynewworks.fiv.MySwipeRefreshLayout>
+</com.example.dllo.mynewworks.fiv.SuperSwipeRefreshLayout>
 
 
 

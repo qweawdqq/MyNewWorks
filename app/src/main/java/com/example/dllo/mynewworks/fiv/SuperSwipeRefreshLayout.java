@@ -395,7 +395,7 @@ public class SuperSwipeRefreshLayout extends ViewGroup {
         ViewCompat.setScaleX(mHeadViewContainer, progress);
         ViewCompat.setScaleY(mHeadViewContainer, progress);
     }
-
+//// TODO: 16/4/29 11111 
     private void setRefreshing(boolean refreshing, final boolean notify) {
         if (mRefreshing != refreshing) {
             mNotify = notify;

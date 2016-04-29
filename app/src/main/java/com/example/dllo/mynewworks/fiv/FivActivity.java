@@ -19,7 +19,7 @@ public class FivActivity extends BaseActivity {
     @Bind(R.id.fiv_recycleview)
     RecyclerView fivRecycleview;
     @Bind(R.id.fiv_layout)
-    MySwipeRefreshLayout fivLayout;
+    SuperSwipeRefreshLayout fivLayout;
 
 
     private FivAdapter adapter;
